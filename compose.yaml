@@ -1,0 +1,6 @@
+services:
+  pythontrigtriangles:
+    image: pythontrigtriangles
+    build:
+      context: .
+      dockerfile: ./Dockerfile
