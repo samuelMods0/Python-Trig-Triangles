@@ -129,7 +129,7 @@ def solve_input_sss(mA, b, a):
 
 def main():
     while True:
-        os.system("clear")
+        os.system("cls" if os.name == "nt" else "clear")
         print("\nWhat kind of triangle do you want to solve?")
         triangle_types = ["SAS", "ASS", "ASA", "AAS", "SSS"]
         current = 1
