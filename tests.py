@@ -21,7 +21,7 @@ triangle_2 = {
 }
 
 def test_sas(triangle:dict):
-    return f"""{solve_sas(triangle["a"], triangle["b"], triangle["mC"])}
+    return f"""{solve_sas(triangle["a"], triangle["mB"], triangle["c"])}
 {triangle}"""
     
 def test_ass(triangle:dict):
@@ -29,11 +29,11 @@ def test_ass(triangle:dict):
 {triangle}"""
 
 def test_asa(triangle:dict):
-    return f"""{solve_asa(triangle["mA"], triangle["mB"], triangle["c"])}
+    return f"""{solve_asa(triangle["mA"], triangle["b"], triangle["mC"])}
 {triangle}"""
 
 def test_aas(triangle:dict):
-    return f"""{solve_aas(triangle["a"], triangle["mA"], triangle["mB"])}
+    return f"""{solve_aas(triangle["mA"], triangle["mB"], triangle["a"])}
 {triangle}"""
 
 def test_sss(triangle:dict):

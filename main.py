@@ -33,10 +33,10 @@ def heron(a, b, c):
     return math.sqrt(s * (s - a) * (s - b) * (s - c))
 
 
-def solve_sas(a, b, mC):
-    c = cos_law(a, b, mC)
-    mA = asin_law(c, a, mC)
-    mB = asin_law(c, b, mC)
+def solve_sas(a, mB, c):
+    b = cos_law(a, c, mB)
+    mA = asin_law(b, a, mB)
+    mC = 180 - (mA + mB)
     area = heron(c, b, a)
 
     return {"a":a, "b":b, "c":c, "mA":mA, "mB":mB, "mC":mC, "area":area}
@@ -55,7 +55,7 @@ def solve_asa(mA, b, mC):
     area = heron(a, b, c)
     return {"a":a, "b":b, "c":c, "mA":mA, "mB":mB, "mC":mC, "area":area}
 
-def solve_aas(a, mA, mB):
+def solve_aas(mA, mB, a):
     mC = 180 - (mA + mB)
     b = sin_law(a, mA, mB)
     c = sin_law(a, mA, mC)
@@ -101,8 +101,8 @@ def ascii_triangle(triangle:dict):
     )
 
 
-def solve_input_sas(a, b, mC):
-    triangle = solve_sas(a, b, mC)
+def solve_input_sas(a, mB, c):
+    triangle = solve_sas(a, mB, c)
     print(ascii_triangle(triangle))
     for key in triangle:
         print(f"{key} = {triangle[key]}")
@@ -147,8 +147,8 @@ def main():
             type_input = int(type_input)
             if type_input == 1:
                 a = float(input("input side a: "))
-                b = float(input("input side b: "))
-                mC = float(input("input angle C in degrees: "))
+                b = float(input("input angle B in degrees: "))
+                mC = float(input("input side c: "))
                 solve_input_sas(a, b, mC)
                 new = input("press enter to reset")
             elif type_input == 2:
@@ -165,9 +165,9 @@ def main():
                 new = input("press enter to reset")
             elif type_input == 4:
                 mA = float(input("input angle A in degrees: "))
-                b = float(input("input side b: "))
+                mB = float(input("input angle B in degrees: "))
                 a = float(input("input side a: "))
-                solve_input_aas(mA, b, a)
+                solve_input_aas(mA, mB, a)
                 new = input("press enter to reset")
             elif type_input == 5:
                 a = float(input("input side a: "))
