@@ -133,52 +133,55 @@ def solve_input_sss(a, b, c):
 
 
 def main():
-    while True:
-        os.system("cls" if os.name == "nt" else "clear")
-        print("\nWhat kind of triangle do you want to solve?")
-        triangle_types = ["SAS", "ASS", "ASA", "AAS", "SSS"]
-        current = 1
-        for triangle_type in triangle_types:
-            print(f"{current}.) {triangle_type}")
-            current += 1
-        print("type the number here:")
-        type_input = input(">>> ")
-        try:
-            type_input = int(type_input)
-            if type_input == 1:
-                a = float(input("input side a: "))
-                b = float(input("input angle B in degrees: "))
-                mC = float(input("input side c: "))
-                solve_input_sas(a, b, mC)
-                new = input("press enter to reset")
-            elif type_input == 2:
-                mA = float(input("input angle A in degrees: "))
-                b = float(input("input side b:"))
-                a = float(input("input side a: "))
-                solve_input_ass(mA, b, a)
-                new = input("press enter to reset")
-            elif type_input == 3:
-                mA = float(input("input angle A in degrees: "))
-                b = float(input("input side b: "))
-                mC = float(input("input angle C in degrees: "))
-                solve_input_asa(mA, b, mC)
-                new = input("press enter to reset")
-            elif type_input == 4:
-                mA = float(input("input angle A in degrees: "))
-                mB = float(input("input angle B in degrees: "))
-                a = float(input("input side a: "))
-                solve_input_aas(mA, mB, a)
-                new = input("press enter to reset")
-            elif type_input == 5:
-                a = float(input("input side a: "))
-                b = float(input("input side b: "))
-                c = float(input("input side c: "))
-                solve_input_sss(a, b, c)
-                new = input("press enter to reset")
-            else:
-                print("Not a valid input.\n")
-        except ValueError:
-            print("Not a valid input\n")
+    try:
+        while True:
+            os.system("cls" if os.name == "nt" else "clear")
+            print("\nWhat kind of triangle do you want to solve?")
+            triangle_types = ["SAS", "ASS", "ASA", "AAS", "SSS"]
+            current = 1
+            for triangle_type in triangle_types:
+                print(f"{current}.) {triangle_type}")
+                current += 1
+            print("type the number here:")
+            type_input = input(">>> ")
+            try:
+                type_input = int(type_input)
+                if type_input == 1:
+                    a = float(input("input side a: "))
+                    b = float(input("input angle B in degrees: "))
+                    mC = float(input("input side c: "))
+                    solve_input_sas(a, b, mC)
+                    new = input("press enter to reset")
+                elif type_input == 2:
+                    mA = float(input("input angle A in degrees: "))
+                    b = float(input("input side b:"))
+                    a = float(input("input side a: "))
+                    solve_input_ass(mA, b, a)
+                    new = input("press enter to reset")
+                elif type_input == 3:
+                    mA = float(input("input angle A in degrees: "))
+                    b = float(input("input side b: "))
+                    mC = float(input("input angle C in degrees: "))
+                    solve_input_asa(mA, b, mC)
+                    new = input("press enter to reset")
+                elif type_input == 4:
+                    mA = float(input("input angle A in degrees: "))
+                    mB = float(input("input angle B in degrees: "))
+                    a = float(input("input side a: "))
+                    solve_input_aas(mA, mB, a)
+                    new = input("press enter to reset")
+                elif type_input == 5:
+                    a = float(input("input side a: "))
+                    b = float(input("input side b: "))
+                    c = float(input("input side c: "))
+                    solve_input_sss(a, b, c)
+                    new = input("press enter to reset")
+                else:
+                    print("Not a valid input.\n")
+            except ValueError:
+                print("Not a valid input\n")
+    except KeyboardInterrupt:
+        print("\nEnded.")
 
 
 if __name__ == "__main__":
