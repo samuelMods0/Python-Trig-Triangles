@@ -10,20 +10,25 @@ def deg_to_rad(deg):
 
 
 def asin_law(a, b, mA):
+    """Solves for angle B given sides a and b, and angle A."""
     value = (b * math.sin(deg_to_rad(mA))) / a
     value = max(-1, min(1, value))
     return rad_to_deg(math.asin(value))
 
 def sin_law(a, mA, mB):
+    """Solves for side b given side a, and angles A and B."""
     return (a * math.sin(deg_to_rad(mB))) / math.sin(deg_to_rad(mA))
 
 def cos_law(b, c, mA):
+    """Solves for side a given sides b and c, and angle A."""
     return math.sqrt(b**2 + c**2 - 2 * b * c * math.cos(deg_to_rad(mA)))
 
 def acos_law(a, b, c):
+    """Solves for angle C given sides a, b, and c."""
     return rad_to_deg(math.acos((a**2 + b**2 - c**2) / (2 * a * b)))
 
 def heron(a, b, c):
+    """Finds the Area of the triangle given sides a, b, and c."""
     s = (a + b + c) / 2
     return math.sqrt(s * (s - a) * (s - b) * (s - c))
 
@@ -59,7 +64,7 @@ def solve_aas(a, mA, mB):
 
 def solve_sss(a, b, c):
     mA = acos_law(c, b, a)
-    mB = acos_law(b, a, c)
+    mB = acos_law(c, a, b)
     mC = 180 - (mA + mB)
     area = heron(a, b, c)
     return {"a":a, "b":b, "c":c, "mA":mA, "mB":mB, "mC":mC, "area":area}
@@ -114,14 +119,14 @@ def solve_input_asa(mA, b, a):
     for key in triangle:
         print(f"{key} = {triangle[key]}")
 
-def solve_input_aas(mA, b, a):
-    triangle = solve_aas(mA, a, b)
+def solve_input_aas(mA, mB, a):
+    triangle = solve_aas(a, mA, mB)
     print(ascii_triangle(triangle))
     for key in triangle:
         print(f"{key} = {triangle[key]}")
 
-def solve_input_sss(mA, b, a):
-    triangle = solve_sss(mA, a, b)
+def solve_input_sss(a, b, c):
+    triangle = solve_sss(a, b, c)
     print(ascii_triangle(triangle))
     for key in triangle:
         print(f"{key} = {triangle[key]}")
@@ -176,4 +181,5 @@ def main():
             print("Not a valid input\n")
 
 
-main()
+if __name__ == "__main__":
+    main()
