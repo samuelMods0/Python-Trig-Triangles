@@ -120,7 +120,7 @@ def solve_input_asa(mA, b, mC):
         print(f"{key} = {triangle[key]}")
 
 def solve_input_aas(mA, mB, a):
-    triangle = solve_aas(a, mA, mB)
+    triangle = solve_aas(mA, mB, a)
     print(ascii_triangle(triangle))
     for key in triangle:
         print(f"{key} = {triangle[key]}")
