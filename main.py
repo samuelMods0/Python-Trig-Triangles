@@ -48,10 +48,10 @@ def solve_ass(mA, a, b):
     area = heron(a, b, c)
     return {"a":a, "b":b, "c":c, "mA":mA, "mB":mB, "mC":mC, "area":area}
 
-def solve_asa(mA, mB, c):
-    mC = 180 - (mA + mB)
-    a = sin_law(c, mC, mA)
-    b = sin_law(c, mC, mB)
+def solve_asa(mA, b, mC):
+    mB = 180 - (mA + mC)
+    a = sin_law(b, mB, mA)
+    c = sin_law(b, mB, mC)
     area = heron(a, b, c)
     return {"a":a, "b":b, "c":c, "mA":mA, "mB":mB, "mC":mC, "area":area}
 
@@ -113,8 +113,8 @@ def solve_input_ass(mA, b, a):
     for key in triangle:
         print(f"{key} = {triangle[key]}")
 
-def solve_input_asa(mA, b, a):
-    triangle = solve_asa(mA, a, b)
+def solve_input_asa(mA, b, mC):
+    triangle = solve_asa(mA, b, mC)
     print(ascii_triangle(triangle))
     for key in triangle:
         print(f"{key} = {triangle[key]}")
@@ -160,8 +160,8 @@ def main():
             elif type_input == 3:
                 mA = float(input("input angle A in degrees: "))
                 b = float(input("input side b: "))
-                a = float(input("input side a: "))
-                solve_input_asa(mA, b, a)
+                mC = float(input("input angle C in degrees: "))
+                solve_input_asa(mA, b, mC)
                 new = input("press enter to reset")
             elif type_input == 4:
                 mA = float(input("input angle A in degrees: "))
